@@ -4,10 +4,12 @@ pipeline{
     }
     tools{
         maven "maven-3.9"
-        jdk "java-1.8.0-openjdk-*"
     }
     stages{
         stage("A"){
+            tools {
+                   jdk "jdk-1.8.101"
+                }
             steps{
                sh "mvn package"
           
