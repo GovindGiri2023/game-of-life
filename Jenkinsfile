@@ -11,8 +11,13 @@ pipeline{
            //        jdk "JDK-8"
            //     }
             steps{
-               sh "mvn package"
+               sh "mvn clean"
           
+            }
+        }
+        stage ("Build") {
+            steps{
+                sh "mnv package"
             }
         }
     
