@@ -10,23 +10,23 @@ pipeline{
        
     }
     stages{
-        stage ("Build") {
+        stage ("Cleaning workspace") {
             steps{
                cleanWs ()
             }
         }
-        stage("Clean workspace"){
+        stage("C"maven cleaning"){
             steps{   
                sh "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b08-1.amzn2.0.1.x86_64"
                sh "mvn clean"
             }
         }
-        stage ("Build") {
+        stage ("Building war file") {
             steps{
                 sh "mvn package"
             }
         }
-        stage ("Deploy to tocat") {
+        stage ("Deploying to tocat") {
             steps{
                 echo "$JENKINS_HOME"
                 //sh cp $/gameoflife-web/target/gameoflife.war
