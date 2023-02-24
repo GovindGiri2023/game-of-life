@@ -8,9 +8,8 @@ pipeline{
     stages{
         stage("A"){
             steps{
-                sh "pwd"
-                sh "ls"
-                echo "This is sampel pipeline"
+               sh "mvn package"
+          
             }
         }
     
