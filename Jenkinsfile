@@ -11,7 +11,7 @@ pipeline{
         stage("A"){
             steps{
                 sh '''
-                    echo ""${jdk}""
+                    echo "${jdk}"
                 '''
                sh "mvn clean"
           
