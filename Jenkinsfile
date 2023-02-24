@@ -7,10 +7,14 @@ pipeline{
     }
     stages{
         stage("A"){
-          /* tools {
+           tools {
                    jdk "JDK-8"
-                }*/
+               
             steps{
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
                sh "mvn clean"
           
             }
