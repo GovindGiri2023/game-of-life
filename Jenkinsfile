@@ -12,7 +12,7 @@ pipeline{
         stage("Clean workspace"){
             steps{
                cleanWs ()
-                sh JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b08-1.amzn2.0.1.x86_64
+                sh "JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b08-1.amzn2.0.1.x86_64"
                sh "mvn clean"
           
             }
