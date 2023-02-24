@@ -33,8 +33,8 @@ pipeline{
         }
         stage ("Deploying to tocat") {
             steps{
-                echo "$JENKINS_HOME"
-                //sh cp $/gameoflife-web/target/gameoflife.war
+                echo "$WORKSPACE"
+                sh cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/apache-tomcat-9.0.72/webapps/
             }
         }
     
