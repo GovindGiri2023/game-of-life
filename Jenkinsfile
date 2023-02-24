@@ -34,7 +34,7 @@ pipeline{
         stage ("Deploying to tocat") {
             steps{
                 echo "$WORKSPACE"
-                sh cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/apache-tomcat-9.0.72/webapps/
+                sh "cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/apache-tomcat-9.0.72/webapps/"
             }
         }
     
