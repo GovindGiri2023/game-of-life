@@ -8,6 +8,7 @@ pipeline{
     stages{
         stage("A"){
             steps{
+                echo "ls -ltr"
                 echo "This is sampel pipeline"
             }
         }
