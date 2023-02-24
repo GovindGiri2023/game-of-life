@@ -35,6 +35,8 @@ pipeline{
             steps{
                 echo "$WORKSPACE"
                 sh "cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/"
+                sh "/opt/tomcat/bin/shutdown.sh"
+                sh "/opt/tomcat/bin/startup.sh"
             }
         }
     
