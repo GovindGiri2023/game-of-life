@@ -7,9 +7,9 @@ pipeline{
     }
     stages{
         stage("A"){
-            tools {
-                   jdk "jdk-1.8.101"
-                }
+           // tools {
+           //        jdk "JDK-8"
+           //     }
             steps{
                sh "mvn package"
           
