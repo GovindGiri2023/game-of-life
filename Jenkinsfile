@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("A"){
             steps{
-                echo "ls -ltr"
+                echo "pwd"
                 echo "This is sampel pipeline"
             }
         }
