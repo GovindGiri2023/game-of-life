@@ -10,10 +10,8 @@ pipeline{
         stage("A"){
             steps{
                 sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                    echo "JAVA_HOME= ${JAVA_HOME}"
-                    export PATH=$PATH:/usr/lib/jvm/java8/openlogic-openjdk-8u362-b09-linux-x64/bin
+                    JAVA_HOME=/usr/lib/jvm/java8/openlogic-openjdk-8u362-b09-linux-x64
+                    export PATH=$PATH:$JAVA_HOME/bin
                 '''
                sh "mvn clean"
           
