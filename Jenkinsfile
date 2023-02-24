@@ -11,10 +11,7 @@ pipeline{
     stages{
         stage("A"){
             steps{
-                sh '''
-                    env.JAVA_HOME = "${jdk}"
-                    echo "installation path is ${jdk}"
-                '''
+               
                sh "mvn clean"
           
             }
