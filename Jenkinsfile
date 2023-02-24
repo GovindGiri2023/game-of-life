@@ -7,9 +7,9 @@ pipeline{
     }
     stages{
         stage("A"){
-           tools {
+          /* tools {
                    jdk "JDK-8"
-                }
+                }*/
             steps{
                sh "mvn clean"
           
