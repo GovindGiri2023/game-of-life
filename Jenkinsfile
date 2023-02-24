@@ -5,13 +5,14 @@ pipeline{
     tools{
         maven "maven-3.9"
         jdk "JDK-8"
+        env.JAVA_HOME = "${jdk}"
        
     }
     stages{
         stage("A"){
             steps{
                 sh '''
-                    echo "${jdk}"
+                    echo "installation path is ${jdk}"
                 '''
                sh "mvn clean"
           
