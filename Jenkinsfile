@@ -11,7 +11,7 @@ pipeline{
     stages{
         stage("Clean workspace"){
             steps{
-               cleabws ()
+               cleanws ()
                sh "mvn clean"
           
             }
