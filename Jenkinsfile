@@ -35,7 +35,7 @@ pipeline{
 			steps{
 				sshagent(credentials : ["ad5d0717-3dfb-469a-8d83-26686a49abee"]) {
 				
-					sh "ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime "whoami""
+					sh "ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime"
 				
 				}
 			}
