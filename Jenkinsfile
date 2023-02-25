@@ -35,7 +35,8 @@ pipeline{
 			steps{
 				sshagent(credentials : ["ssh-id"]) {
 				sh '''
-					sftp ec2-user@172.31.81.49
+					//sftp ec2-user@172.31.81.49
+					ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime "whoami"'
 				'''
 				}
 			}
