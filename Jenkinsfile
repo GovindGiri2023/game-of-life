@@ -35,7 +35,7 @@ pipeline{
 			steps{
 				sshagent(credentials : ['slave-1-ssh-id']) {
 				sh '''
-					sftp -i "${slave-1-ssh-id}" ec2-user@172.31.81.49
+					sftp ec2-user@172.31.81.49
 				'''
 				}
 			}
