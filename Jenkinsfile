@@ -37,11 +37,11 @@ pipeline{
 				
 					//sh "ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime"
 					sh'''
-					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 << EOF
+					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49
 					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps
-					sh /opt/tomcat/bin/shutdown.sh
-					sh /opt/tomcat/bin/shartup.sh
-					EOF
+					/opt/tomcat/bin/shutdown.sh
+				        /opt/tomcat/bin/shartup.sh
+			
 					'''
 				
 				}
