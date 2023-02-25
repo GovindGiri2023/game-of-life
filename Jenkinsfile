@@ -46,10 +46,18 @@ pipeline{
             }
         }
         
-        stage ("colling parameter"){
+        stage ('Starting ART job') {
             steps{
-                build "declarative_pipeline"
+                script{
+                    if ("${NODE_NAME}" == "slave-1"){
+                   
+                        build job: 'scripted_pipeline_test', parameters: [[$class: 'StringParameterValue', name: 'NAME', value: "slave-2"]]
+                  
+                    }        
+                }
+                    
             }
+                
         }
     
 }
