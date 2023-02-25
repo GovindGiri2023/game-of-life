@@ -51,7 +51,7 @@ pipeline{
                 script{
                     if ("${NODE_NAME}" == "slave-1"){
                    
-                        build job: 'scripted_pipeline_test', parameters: [[$class: 'StringParameterValue', name: 'NAME', value: "slave-2"]]
+                        build job: "${JOB_NAME}", parameters: [[$class: 'StringParameterValue', name: 'NAME', value: "slave-2"]]
                   
                     }        
                 }
