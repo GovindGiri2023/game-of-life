@@ -31,15 +31,15 @@ pipeline{
                 sh "mvn package"
             }
         }
-        stage ("Deploying to tocat") {
-            steps{
-                sh'''
-                     sftp -i "${slave-1-ssh-id}" ec2-user@172.31.81.49 << EOF
-                     put  /var/lib/jenkins/workspace/tomcat-installation/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
-                     EOF
-                '''
-            }
-        }
+        stage ('Deploy') {
+			steps{
+				sshagent(credentials : ['slave-1-ssh-id']) {
+				sh '''
+					sftp -i "${slave-1-ssh-id}" ec2-user@172.31.81.49
+				'''
+				}
+			}
+		}
                 
       }
     
