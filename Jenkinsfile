@@ -41,7 +41,13 @@ pipeline{
 					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps
 					/opt/tomcat/bin/shutdown.sh
 				        /opt/tomcat/bin/shartup.sh
-			
+					!
+					
+					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.86.164
+					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps
+					/opt/tomcat/bin/shutdown.sh
+				        /opt/tomcat/bin/shartup.sh
+					!
 					'''
 				
 				}
