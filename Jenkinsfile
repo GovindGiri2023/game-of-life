@@ -1,6 +1,11 @@
 pipeline{
-    agent{
-        label "built-in"
+    parameters{
+        string(name: "NAME", description: "Please enter where you want to execute this job?")
+    }
+    agent {
+        label{
+            label "${NAME}"
+        }
     }
     tools{
         maven "maven-3.9"
@@ -37,6 +42,12 @@ pipeline{
                 sh "cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/"
                 sh "/opt/tomcat/bin/shutdown.sh"
                 sh "/opt/tomcat/bin/startup.sh"
+            }
+        }
+        
+        stage ("colling parameter"){
+            steps{
+                build "declarative_pipeline"
             }
         }
     
