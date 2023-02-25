@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        label "dev"
+        label "built_in"
     }
     tools{
         maven "maven-3.9"
