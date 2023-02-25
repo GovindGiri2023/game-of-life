@@ -1,3 +1,4 @@
+#!/usr/bin/groovy
 pipeline{
     parameters{
         string(name: "NAME", description: "Please enter where you want to execute this job?")
