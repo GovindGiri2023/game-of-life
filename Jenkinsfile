@@ -38,7 +38,7 @@ pipeline{
 					//sh "ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime"
 					sh'''
 					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 << EOF
-					put  /var/lib/jenkins/workspace/tomcat-installation/gameoflife-web/target/gameoflife.war /opt/apache-tomcat-9.0.71/webapps
+					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/apache-tomcat-9.0.71/webapps
 					EOF
 					'''
 				
