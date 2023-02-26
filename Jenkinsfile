@@ -38,17 +38,15 @@ pipeline{
 					//sh "ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime"
 					sh'''
 					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 <<EOF
-					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps
-					cd /opt/tomcat/bin/
-					./shutdown.sh && ./shartup.sh
+					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
+					!command sh /opt/tomcat/bin/startup.sh
 					exit
 				        
 					
 					
 					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.86.164
-					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps
-					cd /opt/tomcat/bin/
-					./shutdown.sh && ./shartup.sh
+					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
+					!command /opt/tomcat/bin/startup.sh
 					exit
 					
 					'''
