@@ -37,7 +37,7 @@ pipeline{
                 sh "mvn package"
             }
         }
-        stage ("Deploying war file to slave-1") {
+        stage ("Deploying war file to tomcat") {
             steps{
                 echo "$WORKSPACE"
                 sh "cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/"
@@ -46,7 +46,7 @@ pipeline{
             }
         }
         
-        stage ('Deploying war file on slave-2') {
+        stage ('Running pipeline on slave2') {
             steps{
                 script{
                     if ("${NODE_NAME}" == "slave-1"){
