@@ -35,7 +35,6 @@ pipeline{
 			steps{
 				sshagent(credentials : ["ad5d0717-3dfb-469a-8d83-26686a49abee"]) {
 				
-					//sh "ssh  -o StrictHostKeyChecking=no  ec2-user@172.31.81.49 uptime"
 					sh'''
 					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 <<EOF
 					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
