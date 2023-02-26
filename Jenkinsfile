@@ -43,6 +43,7 @@ pipeline{
 								sh'''
 									sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 <<EOF
 									put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
+									!command sh /opt/tomcat/bin/shutdown.sh
 									!command sh /opt/tomcat/bin/startup.sh
 									exit
 									EOF
@@ -58,6 +59,7 @@ pipeline{
 								sh '''
 									sftp  -o StrictHostKeyChecking=no ec2-user@172.31.86.164 <<EOF
 									put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
+									!command /opt/tomcat/bin/shutdown.sh
 									!command /opt/tomcat/bin/startup.sh
 									exit
 									EOF
