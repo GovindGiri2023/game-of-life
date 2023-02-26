@@ -31,30 +31,44 @@ pipeline{
                 sh "mvn package"
             }
         }
-        stage ('Deploy') {
-			steps{
-				sshagent(credentials : ["ad5d0717-3dfb-469a-8d83-26686a49abee"]) {
+	
+		stage ('parallel-stages'){
+			
+			parallel {
+        	    	stage ('Deeploy on slave-1') {
+		
+						steps{
+							sshagent(credentials : ["ad5d0717-3dfb-469a-8d83-26686a49abee"]) {
 				
-					sh'''
-					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 <<EOF
-					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
-					!command sh /opt/tomcat/bin/startup.sh
-					exit
-					EOF
+								sh'''
+									sftp  -o StrictHostKeyChecking=no ec2-user@172.31.81.49 <<EOF
+									put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
+									!command sh /opt/tomcat/bin/startup.sh
+									exit
+									EOF
+								'''
 				        
-					
-					
-					sftp  -o StrictHostKeyChecking=no ec2-user@172.31.86.164 <<EOF
-					put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
-					!command /opt/tomcat/bin/startup.sh
-					exit
-					EOF
-					'''
+							}
+						}
+					}
+					stage ('Deeploy on slave-2') {
+		
+						steps{
+							sshagent(credentials : ["ad5d0717-3dfb-469a-8d83-26686a49abee"]) {
+								sh '''
+									sftp  -o StrictHostKeyChecking=no ec2-user@172.31.86.164 <<EOF
+									put  /mnt/slave-2/workspace/declarative_pipeline_first_assignment/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/
+									!command /opt/tomcat/bin/startup.sh
+									exit
+									EOF
+								'''
 				
-				}
+							}
+						}
+					}
 			}
 		}
                 
-      }
+    }
     
 } 
