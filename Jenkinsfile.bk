@@ -37,7 +37,7 @@ pipeline{
                 sh "mvn package"
             }
         }
-        stage ("Deploying to tocat") {
+        stage ("Deploying war to tomcat server") {
             steps{
                 echo "$WORKSPACE"
                 sh "cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/"
@@ -46,7 +46,7 @@ pipeline{
             }
         }
         
-        stage ('Starting ART job') {
+        stage ('Deploying to slave2') {
             steps{
                 script{
                     if ("${NODE_NAME}" == "slave-1"){
