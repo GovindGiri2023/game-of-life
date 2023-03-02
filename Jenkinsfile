@@ -34,7 +34,7 @@ pipeline{
         }
         stage ("Deploying war file to Docker container"){
             steps{
-                sh "sudo docker run -dp 8080:8080 tomcat_${BRANCH_NAME}"
+                sh "sudo docker run -dp 8080:8080 --name tomcat_${BRANCH_NAME} tomcat"
                 sh "sudo docker cp $WORKSPACE/gameoflife-web/target/gameoflife.war tomcat_${BRANCH_NAME}:/usr/local/tomcat/webapps/"
             }
         }
