@@ -2,7 +2,7 @@
 pipeline{
     agent{
         label{
-            label "built-in"
+            label "slave-1"
         }
     }
     tools{
@@ -22,7 +22,7 @@ pipeline{
          }
         stage("maven cleaning"){
             steps{   
-               sh "JAVA_HOME=/var/lib/jenkins/tools/hudson.model.JDK/JDK-8/openlogic-openjdk-8u362-b09-linux-x64"
+               //sh "JAVA_HOME=/var/lib/jenkins/tools/hudson.model.JDK/JDK-8/openlogic-openjdk-8u362-b09-linux-x64"
                 sh "java -version"
                sh "mvn clean"
             }
