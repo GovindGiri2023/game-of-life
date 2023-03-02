@@ -7,7 +7,7 @@ pipeline{
     }
     tools{
         maven "maven-3.9"
-        //jdk "JDK-8"   
+        jdk "JDK-8"   
     }
     stages{
         stage ("Cleaning workspace") {
