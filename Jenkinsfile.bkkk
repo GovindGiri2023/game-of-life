@@ -1,19 +1,9 @@
 #!/usr/bin/groovy
 pipeline{
-    parameters{
-        string(name: "NAME", description: "Please enter where you want to execute this job?")
-    }
-    agent {
+    agent{
         label{
-            label "${NAME}"
+            label "built-in"
         }
-    }
-    tools{
-        maven "maven-3.9"
-        jdk "JDK-8"
-       // git "Git-tool"
-        
-       
     }
     stages{
         stage ("Cleaning workspace") {
@@ -37,28 +27,8 @@ pipeline{
                 sh "mvn package"
             }
         }
-        stage ("Deploying war file to tomcat") {
-            steps{
-                echo "$WORKSPACE"
-                sh "cp $WORKSPACE/gameoflife-web/target/gameoflife.war /opt/tomcat/webapps/"
-                sh "/opt/tomcat/bin/shutdown.sh"
-                sh "/opt/tomcat/bin/startup.sh"
-            }
-        }
         
-        stage ('Running pipeline on slave2') {
-            steps{
-                script{
-                    if ("${NODE_NAME}" == "slave-1"){
-                   
-                        build job: "${JOB_NAME}", parameters: [[$class: 'StringParameterValue', name: 'NAME', value: "slave-2"]]
-                  
-                    }        
-                }
-                    
-            }
-                
-        }
+        
     
 } 
 }
