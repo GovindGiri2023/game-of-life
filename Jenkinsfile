@@ -34,8 +34,9 @@ pipeline{
         }
         stage ("Deploying war file to Docker container"){
             steps{
-                sh "sudo docker run -dp 8080:8080 --name tomcat_${BRANCH_NAME} tomcat /bin/bash -c catalina.sh run"
-                sh "sudo docker cp $WORKSPACE/gameoflife-web/target/gameoflife.war tomcat_${BRANCH_NAME}:/usr/local/tomcat/webapps/"
+                sh "sudo docker run -dp 9090:8080 -v volume1:/usr/local/tomcat/webapps --name tomcat_${BRANCH_NAME} tomcat:8-jre11"
+                sh "cp -r $WORSPACE/gameoflife-web/target/gameoflife.war /var/lib/docker/volumes/volume-samle/_data/"
+                //sh "sudo docker cp $WORKSPACE/gameoflife-web/target/gameoflife.war tomcat_${BRANCH_NAME}:/usr/local/tomcat/webapps/"
                 
             }
         }
