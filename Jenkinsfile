@@ -37,9 +37,9 @@ pipeline{
                 sh "sudo docker build . -t tomcat:9.0"
             }
         }
-        stage ("Removing running container"){
+        stage ("Removing old container"){
             steps{
-                sh "sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true""
+                sh "sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true"
             }
         }
         
