@@ -37,9 +37,14 @@ pipeline{
                 sh "sudo docker build . -t tomcat:9.0"
             }
         }
+        stage ("Removing running container"){
+            steps{
+                sh "sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true""
+            }
+        }
+        
         stage ("Deploying war file to Docker container"){
             steps{
-                sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true"
                 sh "sudo docker run -dp 9090:8080 -v volume1:/opt/apache-tomcat-9.0.73/webapps --name tomcat_${BRANCH_NAME} tomcat:9.0"
                 sh "sudo cp -r $WORKSPACE/gameoflife-web/target/gameoflife.war /var/lib/docker/volumes/volume1/_data/"
                                
