@@ -36,7 +36,7 @@ pipeline{
             steps{
                 sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true"
                 sh "sudo docker run -dp 9090:8080 -v volume1:/usr/local/tomcat/webapps --name tomcat_${BRANCH_NAME} tomcat:8-jre11"
-                sh "cp -r $WORKSPACE/gameoflife-web/target/gameoflife.war /var/lib/docker/volumes/volume-samle/_data/"
+                sh "sudo cp -r $WORKSPACE/gameoflife-web/target/gameoflife.war /var/lib/docker/volumes/volume-samle/_data/"
                 //sh "sudo docker cp $WORKSPACE/gameoflife-web/target/gameoflife.war tomcat_${BRANCH_NAME}:/usr/local/tomcat/webapps/"
                 
             }
