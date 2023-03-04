@@ -39,7 +39,7 @@ pipeline{
         }
         stage ("Removing old container"){
             steps{
-                sh "sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true"
+                sh "sudo docker rm -f tomcat_${BRANCH_NAME} || true"
             }
         }
         
