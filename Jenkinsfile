@@ -19,7 +19,8 @@ pipeline{
 		}
 		
 		stage("deploy war file to tomcat container"){
-			steps{
+			steps{  
+				sh "docker rm -f tomcat-server || true"
 				sh "ansible-playbook docker.yml"
 			}
 		}
