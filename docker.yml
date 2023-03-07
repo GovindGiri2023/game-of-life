@@ -9,4 +9,4 @@
       
 
     - name: copy war file to tomcat-server
-      copy: src=/var/lib/jenkins/workspace/docker/gameoflife-web/target/gameoflife.war dest=/var/lib/docker/volumes/vol1/_date
+      copy: src=/var/lib/jenkins/workspace/docker/gameoflife-web/target/gameoflife.war dest=/var/lib/docker/volumes/vol1/_data/
