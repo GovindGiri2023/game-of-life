@@ -1,0 +1,12 @@
+---
+  - hosts: all
+  	user: ansible
+    become: yes
+
+    tasks:
+    - name: run docker tomcat container
+      command: docker run -dp 8080:8080 --name tomcat-server tomcat tomcat:8-jre11
+
+    - name: copy war file to tomcat-server
+      copy: src=/var/lib/jenkins/workspace/docker/gameoflife-web/target/gameoflife.war dest=/usr/local/tomcat/webapps
+      
